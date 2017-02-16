@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+
 
 import com.google.common.base.Function;
 
@@ -42,7 +42,7 @@ public class WaitTool{
    wait.until(expectation);
   } catch (Throwable error) {
    System.out.println("Timeout waiting for Page Load Request to complete after " + timeOutInSeconds + " seconds");
-   Assert.assertFalse(true, "Timeout waiting for Page Load Request to complete.");
+//   Assert.assertFalse(true, "Timeout waiting for Page Load Request to complete.");
 
   }
  }

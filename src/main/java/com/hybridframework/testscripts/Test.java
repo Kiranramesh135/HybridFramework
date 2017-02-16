@@ -10,6 +10,6 @@ public class Test {
 	public static void main(String[] args) {
 		VtigerLoginPage vtigerLoginPage = new VtigerLoginPage(browser);
 		vtigerLoginPage.login("admin", "1234");
-		new TestHomePage().testHomePage();
+//		new TestHomePage().testHomePage();
 	}
 }
