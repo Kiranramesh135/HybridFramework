@@ -1,15 +1,26 @@
 package com.hybridframework.testscripts;
 
-import com.hybridframework.pom.VtigerLoginPage;
-import com.hybridframework.utils.Browser;
+import org.openqa.selenium.WebDriver;
+
+import com.hybridframework.utils.ConfigReader;
+import com.hybridframework.utils.DriverFactory;
 
 public class Test {
 	
-	static Browser browser = Browser.getInstance();
+	public static WebDriver driver;
 	
 	public static void main(String[] args) {
-		VtigerLoginPage vtigerLoginPage = new VtigerLoginPage(browser);
-		vtigerLoginPage.login("admin", "1234");
-//		new TestHomePage().testHomePage();
+		
+		try
+		{
+			 DriverFactory factory = new DriverFactory();
+			 driver = factory.setup(driver);
+			 driver.get(ConfigReader.getValue("url"));
+		}
+		catch(Exception e )
+		{
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
 	}
 }

@@ -10,7 +10,7 @@ public class ConfigReader
 {
 	public static String getValue(String key)
 	{
-		File config = new File("E:/My_WorkSpace/HybridFramework/config/config.properties");
+		File config = new File("src/main/resources/config/config.properties");
 		
 		String value=null;
 		try

@@ -4,25 +4,25 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class DriverFactory
 {
 	
 	public WebDriver driver;
-//	public static Browser browser;
-	
-//	public static WebDriver getDriver()
-//	{
-//		System.setProperty("webdriver.chrome.driver", "E:\\My_WorkSpace\\MyHybridFramework\\Drivers\\chromedriver_win32\\chromedriver.exe");
-//		driver = new ChromeDriver();
-//		return driver;
-//	}
 	
 	public WebDriver setup(WebDriver driver)
 	{
 		// TODO	Browser and OS specific driver instantiation to be added here
-    	
-    	driver = new ChromeDriver();
+		
+		System.setProperty("webdriver.chrome.driver", "src/main/resources/chrome-executables/chromedriver_win32/chromedriver.exe");
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		
+    	ChromeOptions options = new ChromeOptions();
+    	options.addArguments("start-maximized");
+    	capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+    	driver = new ChromeDriver(capabilities);
     	driver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
 //		driver.get(url);
 		driver.manage().window().maximize();
