@@ -1,51 +1,32 @@
 package com.hybridframework.pom;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import com.hybridframework.utils.WaitTool;
+import com.hybridframework.utils.ConfigProperty.ConfigTimeout;
 
-import com.hybridframework.utils.Browser;
+public class VtigerHomePage extends BasePageObject {
 
-public class VtigerHomePage extends BasePage
-{
-	
-	
-	@FindBy(xpath="//a[@id='menubar_item_Products']/strong")
-	public WebElement products;
-	
-	@FindBy(xpath="//a[@id='menubar_item_right_Administrator']/strong")
-	public WebElement admin;
-	
-	@FindBy(xpath="//a[@id='menubar_item_right_LBL_SIGN_OUT']")
-	public WebElement signout;
-	
-	@FindBy(xpath="//div[@id='basicSearchModulesList_chzn']/a/span")
+	@FindBy(xpath = "//h2[contains(text(),'Home')]")
+	private WebElement homeText;
+	@FindBy(xpath = "//a[@id='menubar_item_Products']/strong")
+	private WebElement productsMenu;
+	@FindBy(xpath = "//a[@id='menubar_item_right_Administrator']/strong")
+	private WebElement admin;
+	@FindBy(xpath = "//a[@id='menubar_item_right_LBL_SIGN_OUT']")
+	private WebElement signout;
+	@FindBy(xpath = "//div[@id='basicSearchModulesList_chzn']/a/span")
 	private WebElement allRecords;
-	
-	
-	public VtigerHomePage(Browser browser)
-	{
-		super(browser);
+
+	public VtigerHomePage(WebDriver driver) {
+		super(driver);
+		WaitTool.waitFor(driver, ExpectedConditions.visibilityOf(homeText),
+		        ConfigTimeout.TIMEOUT_VALUE.getPropertyAsInt());
 	}
-	
-	public String getPageTitle()
-	{
-		return browser.getTitle();
-	}
-	
-	public void clickProducts()
-	{
-		browser.click(products);
-	}
-	
-	public String getText()
-	{
-		return browser.getText(allRecords);
-	}
-	
-	public void signout()
-	{
-		browser.click(admin);
-		browser.click(signout);
-		
+
+	public void clickProductsMenu() {
+		productsMenu.click();
 	}
 }

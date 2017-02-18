@@ -34,13 +34,13 @@ public class Login
 	public void i_am_on_home_page() throws Throwable 
 	{
 //		vtigerHomePage = new VtigerHomePage(browser);
-		System.out.println(vtigerHomePage.getPageTitle());
-		Assert.assertTrue("page title did not match", vtigerHomePage.getPageTitle().equalsIgnoreCase("Home"));
+//		System.out.println(vtigerHomePage.getPageTitle());
+//		Assert.assertTrue("page title did not match", vtigerHomePage.getPageTitle().equalsIgnoreCase("Home"));
 //		SoftAssert sa = new SoftAssert();
 //		sa.assertTrue(vtigerHomePage.getPageTitle().equals("abscd"), "page title did not match");
 //		sa.assertAll();
 //		DriverFactory.destroyDriver();
-		vtigerHomePage.signout();
+//		vtigerHomePage.signout();
 	}
 	
 	@Given("^I asdd$")

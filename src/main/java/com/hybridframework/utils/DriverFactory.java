@@ -14,20 +14,30 @@ public class DriverFactory
 	
 	public WebDriver setup(WebDriver driver)
 	{
-		// TODO	Browser and OS specific driver instantiation to be added here
 		
-		System.setProperty("webdriver.chrome.driver", "src/main/resources/chrome-executables/chromedriver_win32/chromedriver.exe");
-		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		if(driver==null) {
+			// TODO	Browser and OS specific driver instantiation to be added here
+			
+			System.setProperty("webdriver.chrome.driver", "src/main/resources/chrome-executables/chromedriver_win32/chromedriver.exe");
+			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+			
+	    	ChromeOptions options = new ChromeOptions();
+	    	options.addArguments("start-maximized");
+	    	capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+	    	driver = new ChromeDriver(capabilities);
+	    	driver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
+			driver.get(ConfigReader.getValue("url"));
+			driver.manage().window().maximize();
+	    	this.driver=driver;
+	    	return this.driver;
+			
+		}
+		else
+		{
+			return this.driver;
+		}
 		
-    	ChromeOptions options = new ChromeOptions();
-    	options.addArguments("start-maximized");
-    	capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-    	driver = new ChromeDriver(capabilities);
-    	driver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
-//		driver.get(url);
-		driver.manage().window().maximize();
-    	this.driver=driver;
-		return driver;
+		
 	}
 	 
 

@@ -1,16 +1,17 @@
 package com.hybridframework.pom;
 
-import com.hybridframework.utils.Browser;
+import org.openqa.selenium.WebDriver;
 
-public class CreateProductPage extends BasePage
+
+public class CreateProductPage extends BasePageObject
 {
-	public CreateProductPage(Browser browser)
+	public CreateProductPage(WebDriver driver)
 	{
-		super(browser);
+		super(driver);
 	}
 	
 	public String getPageTitle()
 	{
-		return browser.getTitle();
+		return driver.getTitle();
 	}
 }
