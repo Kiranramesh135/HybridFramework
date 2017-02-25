@@ -8,28 +8,5 @@ import java.util.Properties;
 
 public class ConfigReader
 {
-	public static String getValue(String key)
-	{
-		File config = new File("src/main/resources/config/config.properties");
-		
-		String value=null;
-		try
-		{
-			FileReader reader = new FileReader(config);
-			Properties props = new Properties();
-			props.load(reader);
-			value = props.getProperty(key);	
-		}
-		catch (FileNotFoundException e)
-		{
-			e.printStackTrace();
-		} 
-		catch (IOException e)
-		{
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
-		
-		return value;
-	}
+	
 }

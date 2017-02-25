@@ -29,7 +29,6 @@ public class VtigerLoginPage extends BasePageObject {
 		password.sendKeys(pwd);
 		// Click on sign in button
 		signIn.click();
-	
 	}
 
 	public String getPageTitle() {

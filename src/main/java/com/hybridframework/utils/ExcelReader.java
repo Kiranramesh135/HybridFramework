@@ -2,7 +2,6 @@ package com.hybridframework.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -16,11 +15,10 @@ public class ExcelReader {
 
 	public static Object[][] readData(String sheetName) {
 		Object[][] data = null;
-
 		FileInputStream ExcelFile;
 		try {
-			ExcelFile = new FileInputStream(new File(ConfigReader.getValue("testData")));
-			System.out.println(ConfigReader.getValue("testData"));
+			ExcelFile = new FileInputStream(new File(Utilities.getPropertyValue("testData")));
+			System.out.println(Utilities.getPropertyValue("testData"));
 			Workbook workbook = WorkbookFactory.create(ExcelFile);
 			Sheet sheet = workbook.getSheet(sheetName);
 			System.out.println(sheet);
@@ -46,7 +44,5 @@ public class ExcelReader {
 			System.out.println(e.getMessage());
 		}
 		return data;
-
 	}
-
 }
