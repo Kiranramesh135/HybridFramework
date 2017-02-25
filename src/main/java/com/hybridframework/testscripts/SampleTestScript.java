@@ -1,25 +1,22 @@
 package com.hybridframework.testscripts;
 
-
-
+import org.apache.logging.log4j.LogManager;
 import org.testng.annotations.Test;
 import com.hybridframework.pom.ProductsListPage;
 import com.hybridframework.pom.VtigerHomePage;
 import com.hybridframework.pom.VtigerLoginPage;
 
+public class SampleTestScript extends BaseTestNG {
 
-public class SampleTestScript extends BaseTestNG{
-	
 	@Test
-	public void testLogin()
-	{
+	public void testLogin() {
+		logger = LogManager.getLogger(this.getClass());
 		logger.info("Initializing brower");
 		new VtigerLoginPage(driver).login("admin", "1234");
-		logger.info("Logging in to vtiger");
-		logger.info("Clicking on Products Menu");
+		logger.error("Logging in to vtiger");
+		logger.error("Clicking on Products Menu");
 		new VtigerHomePage(driver).clickProductsMenu();
 		logger.info("Clicking on Add Products Menu");
 		new ProductsListPage(driver).clickAddProductsButton();
-		
 	}
 }

@@ -1,11 +1,13 @@
 package com.hybridframework.utils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.net.URI;
-import org.apache.log4j.xml.DOMConfigurator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.config.ConfigurationSource;
+import org.apache.logging.log4j.core.config.xml.XmlConfiguration;
 
 
 /**
@@ -19,10 +21,10 @@ public class LogDemo {
     	
     	try
     	{
-    		
-    		/*File file = new File("src/main/resources/config/log4j2.xml");
+    		LoggerContext context = (LoggerContext) LogManager.getContext(false);
+    		File file = new File("src/main/resources/config/log4j2.xml");
     		context.setConfigLocation(file.toURI());
-    		Logger logger = LogManager.getLogger(LogDemo.class);*/
+    		Logger logger = LogManager.getLogger(LogDemo.class);
     		
 //    		2nd implementation
     		
@@ -31,21 +33,21 @@ public class LogDemo {
     		ConfigurationSource source = new ConfigurationSource(new FileInputStream("src/main/resources/config/log4j2.xml"));
     		XmlConfiguration xmlConfig = new XmlConfiguration(context, source);
     		LoggerContext.getContext().start(xmlConfig); 
-    		Logger logger = (Logger) LogManager.getLogger(LogDemo.class);*/
+    		Logger logger = (Logger) LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);*/
     		
     		
-    		/*File f = new File("src/main/resources/config/log4j2.xml");
+    	/*	File f = new File("src/main/resources/config/log4j2.xml");
     		java.net.URI fc = f.toURI();         
     		System.out.println("Loading logging config file: " + fc);
     		Logger logger = (Logger) LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
-    		LoggerContext.getContext().setConfigLocation(fc);
+    		LoggerContext.getContext().setConfigLocation(fc);*/
     		
     		
     		
     		logger.info("info");
-    		logger.error("error"); */
+    		logger.error("error"); 
     		
-    		readconfig();
+//    		readconfig();
         
     	}
     	catch(Exception e) {
