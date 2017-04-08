@@ -8,7 +8,7 @@ import com.hybridframework.utils.WaitTool;
 import com.hybridframework.utils.ConfigProperty.ConfigTimeout;
 
 public class VtigerHomePage extends BasePageObject {
-
+	
 	@FindBy(xpath = "//h2[contains(text(),'Home')]")
 	private WebElement homeText;
 	@FindBy(xpath = "//a[@id='menubar_item_Products']/strong")
@@ -19,13 +19,13 @@ public class VtigerHomePage extends BasePageObject {
 	private WebElement signout;
 	@FindBy(xpath = "//div[@id='basicSearchModulesList_chzn']/a/span")
 	private WebElement allRecords;
-
+	
 	public VtigerHomePage(WebDriver driver) {
 		super(driver);
 		WaitTool.waitFor(driver, ExpectedConditions.visibilityOf(homeText),
 		        ConfigTimeout.TIMEOUT_VALUE.getPropertyAsInt());
 	}
-
+	
 	public void clickProductsMenu() {
 		productsMenu.click();
 	}

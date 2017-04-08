@@ -1,7 +1,6 @@
 package com.hybridframework.testscripts;
 
 import org.openqa.selenium.WebDriver;
-import com.hybridframework.utils.ConfigReader;
 import com.hybridframework.utils.DriverFactory;
 import com.hybridframework.utils.Utilities;
 

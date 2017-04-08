@@ -1,6 +1,5 @@
 package com.hybridframework.utils;
 
-
 public class ConfigProperty {
 	
 	public enum ConfigTimeout {
@@ -9,7 +8,7 @@ public class ConfigProperty {
 		String value;
 		
 		ConfigTimeout(String value) {
-			this.value=value;
+			this.value = value;
 		}
 		
 		public int getPropertyAsInt() {
@@ -19,6 +18,5 @@ public class ConfigProperty {
 		public String getProperty() {
 			return value;
 		}
-		
 	}
 }

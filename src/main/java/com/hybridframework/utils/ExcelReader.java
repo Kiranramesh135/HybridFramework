@@ -8,11 +8,11 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ExcelReader {
-
+	
 	public static void main(String[] args) {
 		readData("Sheet1");
 	}
-
+	
 	public static Object[][] readData(String sheetName) {
 		Object[][] data = null;
 		FileInputStream ExcelFile;
@@ -39,7 +39,8 @@ public class ExcelReader {
 					data[i - 1][j] = "" + cell;
 				}
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
 		}

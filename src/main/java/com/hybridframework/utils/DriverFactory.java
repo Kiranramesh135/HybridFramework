@@ -7,9 +7,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class DriverFactory {
-
+	
 	public WebDriver driver;
-
+	
 	public WebDriver setup(WebDriver driver) {
 		if (driver == null) {
 			// TODO Browser and OS specific driver instantiation to be added
@@ -26,11 +26,12 @@ public class DriverFactory {
 			driver.manage().window().maximize();
 			this.driver = driver;
 			return this.driver;
-		} else {
+		}
+		else {
 			return this.driver;
 		}
 	}
-
+	
 	public void destroyDriver() {
 		driver.quit();
 		driver = null;

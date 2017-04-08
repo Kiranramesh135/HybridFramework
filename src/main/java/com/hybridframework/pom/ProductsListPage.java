@@ -8,18 +8,18 @@ import com.hybridframework.utils.WaitTool;
 import com.hybridframework.utils.ConfigProperty.ConfigTimeout;
 
 public class ProductsListPage extends BasePageObject {
-
+	
 	@FindBy(id = "Products_listView_basicAction_LBL_ADD_RECORD")
 	private WebElement addProductButton;
 	@FindBy(xpath = "//strong[contains(text(),'Products List')]/..")
 	private WebElement productsListLink;
-
+	
 	public ProductsListPage(WebDriver driver) {
 		super(driver);
 		WaitTool.waitFor(driver, ExpectedConditions.visibilityOf(productsListLink),
 		        ConfigTimeout.TIMEOUT_VALUE.getPropertyAsInt());
 	}
-
+	
 	public void clickAddProductsButton() {
 		addProductButton.click();
 	}
