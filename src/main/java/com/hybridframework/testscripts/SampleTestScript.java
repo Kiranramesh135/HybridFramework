@@ -16,8 +16,8 @@ public class SampleTestScript extends BaseTestNG {
 		logger.info("Initializing brower");
 		VtigerLoginPage vtigerLoginPage = new VtigerLoginPage(driver);
 		logger.error("Logging in to vtiger");
-		Utilities.takeScreenshot(driver, "LoginPage");
 		vtigerLoginPage.login("admin", "1234");
+		Utilities.takeScreenshot(driver, "LoginPage");
 		logger.error("Clicking on Products Menu");
 		VtigerHomePage vtigerHomePage = new VtigerHomePage(driver);
 		Utilities.takeScreenshot(driver, "HomePage");
