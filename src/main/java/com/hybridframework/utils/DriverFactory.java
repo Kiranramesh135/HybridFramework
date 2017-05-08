@@ -15,12 +15,29 @@ public class DriverFactory {
 			
 			// TODO Browser and OS specific driver instantiation to be added
 			// here
+
+			final URI uri;
+			final URI exe;
+
 //			System.getProperty(key)
 			System.setProperty("webdriver.chrome.driver",
 			        "src/main/resources/chrome-executables/chromedriver_win32/chromedriver");
+
 			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("start-maximized");
+
+			if(getOSType().contains("Windows"))
+			{
+				System.out.println("Setting chrome driver path for Windows...")
+						
+
+			}
+
+			System.setProperty("webdriver.chrome.driver",
+			        "src/main/resources/chrome-executables/chromedriver_win32/chromedriver.exe");
+
+
 			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 			driver = new ChromeDriver(capabilities);
 			driver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
@@ -32,6 +49,11 @@ public class DriverFactory {
 		else {
 			return this.driver;
 		}
+	}
+
+	public String getOSType(){
+		System.out.println(System.getProperty("os.name") );
+		return System.getProperty("os.name");
 	}
 	
 	
