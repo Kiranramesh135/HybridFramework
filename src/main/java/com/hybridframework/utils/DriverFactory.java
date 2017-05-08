@@ -12,10 +12,12 @@ public class DriverFactory {
 	
 	public WebDriver setup(WebDriver driver) {
 		if (driver == null) {
+			
 			// TODO Browser and OS specific driver instantiation to be added
 			// here
+//			System.getProperty(key)
 			System.setProperty("webdriver.chrome.driver",
-			        "src/main/resources/chrome-executables/chromedriver_win32/chromedriver.exe");
+			        "src/main/resources/chrome-executables/chromedriver_win32/chromedriver");
 			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("start-maximized");
@@ -31,6 +33,8 @@ public class DriverFactory {
 			return this.driver;
 		}
 	}
+	
+	
 	
 	public void destroyDriver() {
 		driver.quit();
