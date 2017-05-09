@@ -2,10 +2,11 @@ package com.hybridframework.testscripts;
 
 import org.apache.logging.log4j.*;
 import org.testng.annotations.Test;
-import com.hybridframework.pom.ProductsListPage;
-import com.hybridframework.pom.VtigerHomePage;
-import com.hybridframework.pom.VtigerLoginPage;
+
 import com.hybridframework.utils.Utilities;
+import com.hybridframework.vtiger.pom.ProductsListPage;
+import com.hybridframework.vtiger.pom.VtigerHomePage;
+import com.hybridframework.vtiger.pom.VtigerLoginPage;
 
 public class SampleTestScript extends BaseTestNG {
 	

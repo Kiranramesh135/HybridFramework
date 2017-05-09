@@ -1,7 +1,8 @@
 package com.hybridframework.stepdefinitions;
 
-import com.hybridframework.pom.VtigerHomePage;
-import com.hybridframework.pom.VtigerLoginPage;
+import com.hybridframework.vtiger.pom.VtigerHomePage;
+import com.hybridframework.vtiger.pom.VtigerLoginPage;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
