@@ -23,6 +23,7 @@ public class OrangehrmLoginPage extends BasePageObject {
 		super(driver);
 		WaitTool.waitFor(driver, ExpectedConditions.visibilityOf(loginButton),
 				ConfigTimeout.TIMEOUT_VALUE.getPropertyAsInt());
+		System.out.println("Landed in OrangehrmLoginPage");
 	}
 	
 	public void login(String uName, String pwd) {

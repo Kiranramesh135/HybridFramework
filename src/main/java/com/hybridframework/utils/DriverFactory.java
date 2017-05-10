@@ -2,11 +2,11 @@ package com.hybridframework.utils;
 
 import java.net.URI;
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.internal.PackageUtils;
 
 public class DriverFactory {
 
@@ -14,16 +14,6 @@ public class DriverFactory {
 
 	public WebDriver setup(WebDriver driver) {
 		if (driver == null) {
-
-			// TODO Browser and OS specific driver instantiation to be added
-			// here
-
-			final URI uri;
-			final URI exe;
-
-			// System.getProperty(key)
-			// System.setProperty("webdriver.chrome.driver",
-			// "src/main/resources/chrome-executables/chromedriver_win32/chromedriver");
 
 			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 			ChromeOptions options = new ChromeOptions();
@@ -35,16 +25,14 @@ public class DriverFactory {
 						"src/main/resources/chrome-executables/chromedriver_win32/chromedriver.exe");
 				System.out.println(System.getProperty("webdriver.chrome.driver"));
 
-			}
-			else if(getOSType().contains("Mac")) {
+			} else if (getOSType().contains("Mac")) {
 				System.out.println("Setting Chrome driver path for MAC...");
-				System.setProperty("webdriver.chrome.driver", 
+				System.setProperty("webdriver.chrome.driver",
 						"src/main/resources/chrome-executables/chromedriver_mac64/chromedriver");
-				Utilities.executeCMD("chmod +x " + "src/main/resources/chrome-executables/chromedriver_mac64/chromedriver");
+				Utilities.executeCMD(
+						"chmod +x " + "src/main/resources/chrome-executables/chromedriver_mac64/chromedriver");
 				System.out.println(System.getProperty("webdriver.chrome.driver"));
 			}
-
-			
 
 			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 			driver = new ChromeDriver(capabilities);

@@ -2,8 +2,10 @@ package com.hybridframework.testscripts;
 
 import org.openqa.selenium.WebDriver;
 
+import com.hybridframework.orangehrm.pom.OrangehrmAddUserPage;
 import com.hybridframework.orangehrm.pom.OrangehrmHomePage;
 import com.hybridframework.orangehrm.pom.OrangehrmLoginPage;
+import com.hybridframework.orangehrm.pom.OrangehrmSystemUsersPage;
 import com.hybridframework.utils.DriverFactory;
 import com.hybridframework.utils.Utilities;
 
@@ -19,10 +21,18 @@ public class Test {
 			OrangehrmLoginPage orangecrmLoginPage = new OrangehrmLoginPage(driver);
 			orangecrmLoginPage.login("Admin", "admin");
 			OrangehrmHomePage orangehrmHomePage = new OrangehrmHomePage(driver);
+			orangehrmHomePage.clickAdminTab();
+			OrangehrmSystemUsersPage orangehrmSystemUsersPage = new OrangehrmSystemUsersPage(driver);
+			orangehrmSystemUsersPage.clickAddButton();
+			OrangehrmAddUserPage orangehrmAddUserPage = new OrangehrmAddUserPage(driver);
+			orangehrmAddUserPage.enterUserDetails("Andrew Daley", "AndrewDaley", "abcd", "abcd");
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
+		}
+		finally {
+//			driver.quit();
 		}
 	}
 }

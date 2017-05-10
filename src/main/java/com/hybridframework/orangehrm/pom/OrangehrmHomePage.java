@@ -12,11 +12,21 @@ public class OrangehrmHomePage extends BasePageObject {
 
 	@FindBy(xpath = "//h1[contains(text(),'Dashboard')]")
 	private WebElement dashboard;
+	
+	@FindBy(id="menu_admin_viewAdminModule")
+	private WebElement adminTab;
+	
+	
 
 	public OrangehrmHomePage(WebDriver driver) {
 		super(driver);
 		WaitTool.waitFor(driver, ExpectedConditions.visibilityOf(dashboard),
 				ConfigTimeout.TIMEOUT_VALUE.getPropertyAsInt());
+		System.out.println("Landed in OrangehrmHomePage");
+	}
+	
+	public void clickAdminTab() {
+		adminTab.click();
 	}
 
 }
