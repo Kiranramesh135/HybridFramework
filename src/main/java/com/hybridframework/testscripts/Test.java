@@ -25,7 +25,9 @@ public class Test {
 			OrangehrmSystemUsersPage orangehrmSystemUsersPage = new OrangehrmSystemUsersPage(driver);
 			orangehrmSystemUsersPage.clickAddButton();
 			OrangehrmAddUserPage orangehrmAddUserPage = new OrangehrmAddUserPage(driver);
-			orangehrmAddUserPage.enterUserDetails("Andrew Daley", "AndrewDaley", "abcd", "abcd");
+			orangehrmAddUserPage.enterUserDetails("Andrew Daley", "AndrewDaley1", "abcd", "abcd");
+			orangehrmSystemUsersPage.waitForsystemUsersHeader();
+			orangehrmSystemUsersPage.logout();
 		}
 		catch (Exception e) {
 			e.printStackTrace();

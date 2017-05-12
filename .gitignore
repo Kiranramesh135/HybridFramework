@@ -1,1 +1,4 @@
 /target/
+*.png
+test-output/Default suite
+test-output

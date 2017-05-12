@@ -9,19 +9,19 @@ import com.hybridframework.utils.DriverFactory;
 import com.hybridframework.utils.LogFactory;
 
 public class BaseTestNG {
-	
+
 	protected DriverFactory driverFactory;
-	protected WebDriver driver;
-	public Logger logger = new LogFactory().getLogger();
-	
+	protected static WebDriver driver;
+	public Logger logger=new LogFactory().getLogger();
+
 	@BeforeSuite
 	public void preCondition() {
-		logger = LogManager.getLogger(this.getClass());
+		logger=LogManager.getLogger(this.getClass());
 		logger.info("----------Initializing Driver----------");
-		driverFactory = new DriverFactory();
-		driver = driverFactory.setup(driver);
+		driverFactory=new DriverFactory();
+		driver=driverFactory.setup(driver);
 	}
-	
+
 	@AfterSuite
 	public void postCondition() {
 		driverFactory.destroyDriver();

@@ -8,7 +8,7 @@ import com.hybridframework.vtiger.pom.ProductsListPage;
 import com.hybridframework.vtiger.pom.VtigerHomePage;
 import com.hybridframework.vtiger.pom.VtigerLoginPage;
 
-public class SampleTestScript extends BaseTestNG {
+public class SampleTestScriptVtiger extends BaseTestNG {
 	
 	public Logger logger = LogManager.getLogger(this.getClass());
 	
