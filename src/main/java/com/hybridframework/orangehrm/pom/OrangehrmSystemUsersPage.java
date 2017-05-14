@@ -49,9 +49,12 @@ public class OrangehrmSystemUsersPage extends BasePageObject {
 	public void searchAndDeleteUser(String uName) {
 		userNameTextBox.sendKeys(uName);
 		searchButton.click();
+		
 		WebElement checkBox=driver
 				.findElement(By.xpath("//a[contains(text(),'" + uName + "')]/../..//input[@type='checkbox']"));
+		
 		WaitTool.waitFor(driver, ExpectedConditions.visibilityOf(checkBox), 30);
+		
 		checkBox.click();
 		deleteButton.click();
 		deleteOkButton.click();

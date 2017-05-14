@@ -24,6 +24,6 @@ public class BaseTestNG {
 
 	@AfterSuite
 	public void postCondition() {
-		driverFactory.destroyDriver();
+//		driverFactory.destroyDriver();
 	}
 }

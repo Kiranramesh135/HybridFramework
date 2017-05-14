@@ -8,11 +8,11 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ExcelReader {
-	
+
 	public static void main(String[] args) {
 		readData("Sheet1");
 	}
-	
+
 	public static Object[][] readData(String sheetName) {
 		Object[][] data = null;
 		FileInputStream ExcelFile;

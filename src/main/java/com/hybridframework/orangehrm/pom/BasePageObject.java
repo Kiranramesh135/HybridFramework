@@ -13,19 +13,19 @@ public abstract class BasePageObject {
 
 	protected WebDriver driver;
 
-	@FindBy(id="btnLogin")
+	@FindBy(id = "btnLogin")
 	private WebElement loginButton;
 
-	@FindBy(id="welcome")
+	@FindBy(id = "welcome")
 	private WebElement welcome;
 
-	@FindBy(xpath="//a[contains(text(),'Logout')]")
+	@FindBy(xpath = "//a[contains(text(),'Logout')]")
 	private WebElement logoutLink;
 
 	protected BasePageObject(WebDriver driver) {
 		System.out.println("Inside basepageobject constructor");
 		PageFactory.initElements(driver, this);
-		this.driver=driver;
+		this.driver = driver;
 	}
 
 	public void logout() {
