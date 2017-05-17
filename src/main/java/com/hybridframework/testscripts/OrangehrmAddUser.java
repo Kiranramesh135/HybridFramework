@@ -6,6 +6,7 @@ import com.hybridframework.orangehrm.pom.OrangehrmAddUserPage;
 import com.hybridframework.orangehrm.pom.OrangehrmHomePage;
 import com.hybridframework.orangehrm.pom.OrangehrmLoginPage;
 import com.hybridframework.orangehrm.pom.OrangehrmSystemUsersPage;
+import com.hybridframework.utils.Utilities;
 
 public class OrangehrmAddUser extends BaseTestNG {
 
@@ -16,6 +17,7 @@ public class OrangehrmAddUser extends BaseTestNG {
 
 			OrangehrmLoginPage orangecrmLoginPage=new OrangehrmLoginPage(driver);
 			logger.info("---------Opening Login Page---------");
+			Utilities.takeScreenshot(driver, "LoginPage");
 			orangecrmLoginPage.login("Admin", "admin");
 			OrangehrmHomePage orangehrmHomePage=new OrangehrmHomePage(driver);
 			orangehrmHomePage.clickAdminTab();

@@ -35,8 +35,9 @@ public class OrangehrmAddUserPage extends BasePageObject {
 				ConfigTimeout.TIMEOUT_VALUE.getPropertyAsInt());
 		System.out.println("Landed in OrangehrmAddUserPage");
 	}
-	
-	public void enterUserDetails(String emplName, String uName, String pwd, String confirmPwd) throws InterruptedException {
+
+	public void enterUserDetails(String emplName, String uName, String pwd, String confirmPwd)
+			throws InterruptedException {
 		employeeName.sendKeys(emplName);
 		employeeName.sendKeys(Keys.TAB);
 		employeeName.sendKeys(Keys.TAB);
@@ -45,9 +46,7 @@ public class OrangehrmAddUserPage extends BasePageObject {
 		password.sendKeys(pwd);
 		confirmPassword.sendKeys(confirmPwd);
 		saveButton.click();
-		
-			
-		}
-	
+
+	}
 
 }

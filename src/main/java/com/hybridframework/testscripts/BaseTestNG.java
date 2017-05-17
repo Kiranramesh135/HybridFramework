@@ -5,8 +5,10 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+
 import com.hybridframework.utils.DriverFactory;
 import com.hybridframework.utils.LogFactory;
+import com.hybridframework.utils.Utilities;
 
 public class BaseTestNG {
 
@@ -16,6 +18,8 @@ public class BaseTestNG {
 
 	@BeforeSuite
 	public void preCondition() {
+		
+		Utilities.createResultFolder();
 		logger=LogManager.getLogger(this.getClass());
 		logger.info("----------Initializing Driver----------");
 		driverFactory=new DriverFactory();
