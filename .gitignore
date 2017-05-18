@@ -2,3 +2,4 @@
 *.png
 test-output/Default suite
 test-output
+src/main/resources/Results

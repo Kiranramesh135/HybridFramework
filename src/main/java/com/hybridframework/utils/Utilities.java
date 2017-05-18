@@ -17,6 +17,8 @@ import org.openqa.selenium.WebDriver;
 public class Utilities {
 
 	public static File OutputFile;
+	public static String scrShtFileName;
+	
 
 	public static void takeScreenshot(WebDriver driver, String filename) {
 		// For Local execution
@@ -33,8 +35,9 @@ public class Utilities {
 				scrShtFolder.mkdir();
 			}
 			System.out.println(scrShtFolder.getAbsolutePath());
+			scrShtFileName = scrShtFolder.getAbsolutePath() + "/" + filename + System.currentTimeMillis() + ".png";
 			FileUtils.copyFile(srcFile,
-					new File(scrShtFolder.getAbsolutePath() + "/" + filename + System.currentTimeMillis() + ".png"));
+					new File(scrShtFileName));
 
 		}
 		catch (IOException e) {
