@@ -1,6 +1,7 @@
 package com.hybridframework.utils;
 
-import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Dimension;
@@ -9,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class DriverFactory {
@@ -38,6 +38,16 @@ public class DriverFactory {
 						capabilities = DesiredCapabilities.chrome();
 						ChromeOptions options = new ChromeOptions();
 						options.addArguments("start-maximized");
+
+						// to disable save password popup
+						options.addArguments("chrome.switches",
+								"--disable-extensions --disable-extensions-file-access-check "
+								+ "--disable-extensions-http-throttling --disable-infobars --enable-automation --start-maximized");
+						Map<String, Object> prefs = new HashMap<String, Object>();
+					    prefs.put("credentials_enable_service", false);
+					    prefs.put("profile.password_manager_enabled", false);
+					    options.setExperimentalOption("prefs", prefs);
+					    
 						// to disable 'chrome is being controlled by automated
 						// test software'
 						options.addArguments("disable-infobars");

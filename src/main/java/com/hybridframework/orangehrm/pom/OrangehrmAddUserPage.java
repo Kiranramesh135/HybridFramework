@@ -45,8 +45,11 @@ public class OrangehrmAddUserPage extends BasePageObject {
 		userName.sendKeys(uName);
 		password.sendKeys(pwd);
 		confirmPassword.sendKeys(confirmPwd);
-		saveButton.click();
 
+	}
+
+	public void clickSave() {
+		saveButton.click();
 	}
 
 }

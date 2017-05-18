@@ -17,8 +17,9 @@ public class ExcelReader {
 		Object[][] data = null;
 		FileInputStream ExcelFile;
 		try {
-			ExcelFile = new FileInputStream(new File(Utilities.getPropertyValue("testData")));
-			System.out.println(Utilities.getPropertyValue("testData"));
+			String excelPath = System.getProperty("user.dir") + Utilities.getPropertyValue("testData"); 
+			ExcelFile = new FileInputStream(new File(excelPath));
+			System.out.println(excelPath);
 			Workbook workbook = WorkbookFactory.create(ExcelFile);
 			Sheet sheet = workbook.getSheet(sheetName);
 			System.out.println(sheet);
