@@ -5,12 +5,7 @@
 	<artifactId>HybridFramework</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-
-
 	<dependencies>
-
-
-
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
@@ -112,6 +107,11 @@
 			<groupId>com.relevantcodes</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>2.41.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.1.1.jre6</version>
 		</dependency>
 	</dependencies>
 	<build>

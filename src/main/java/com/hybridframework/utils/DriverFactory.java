@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -15,8 +17,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class DriverFactory {
 
 	public WebDriver driver;
+	public Logger logger = new LogFactory().getLogger();
 
 	public WebDriver setup(WebDriver driver) {
+
+		logger = LogManager.getLogger(this.getClass());
 
 		try {
 
@@ -25,10 +30,12 @@ public class DriverFactory {
 				DesiredCapabilities capabilities = null;
 
 				if (getOSType().contains("Windows")) {
-					System.out.println("Setting chrome driver path for Windows...");
+					logger.info("----------Setting chrome driver path for Windows...----------");
+
 					System.setProperty("webdriver.chrome.driver",
 							"src/main/resources/chrome-executables/chromedriver_win32/chromedriver.exe");
-					System.out.println(System.getProperty("webdriver.chrome.driver"));
+					logger.info("Found chrome driver exe in the below mentioned path");
+					logger.info(System.getProperty("webdriver.chrome.driver"));
 
 				}
 				else if (getOSType().contains("Mac")) {
@@ -42,22 +49,22 @@ public class DriverFactory {
 						// to disable save password popup
 						options.addArguments("chrome.switches",
 								"--disable-extensions --disable-extensions-file-access-check "
-								+ "--disable-extensions-http-throttling --disable-infobars --enable-automation --start-maximized");
+										+ "--disable-extensions-http-throttling --disable-infobars --enable-automation --start-maximized");
 						Map<String, Object> prefs = new HashMap<String, Object>();
-					    prefs.put("credentials_enable_service", false);
-					    prefs.put("profile.password_manager_enabled", false);
-					    options.setExperimentalOption("prefs", prefs);
-					    
+						prefs.put("credentials_enable_service", false);
+						prefs.put("profile.password_manager_enabled", false);
+						options.setExperimentalOption("prefs", prefs);
+
 						// to disable 'chrome is being controlled by automated
 						// test software'
 						options.addArguments("disable-infobars");
 
-						System.out.println("Setting Chrome driver path for MAC...");
+						logger.info("etting Chrome driver path for MAC...");
 						System.setProperty("webdriver.chrome.driver",
 								"src/main/resources/executables/chrome/chromedriver_mac64/chromedriver");
 						Utilities.executeCMD(
 								"chmod +x " + "src/main/resources/executables/chrome/chromedriver_mac64/chromedriver");
-						System.out.println(System.getProperty("webdriver.chrome.driver"));
+						logger.info(System.getProperty("webdriver.chrome.driver"));
 
 						capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 						driver = new ChromeDriver(capabilities);
@@ -70,7 +77,9 @@ public class DriverFactory {
 						// capabilities = DesiredCapabilities.firefox();
 						// FirefoxOptions options = new FirefoxOptions();
 						// options.addArguments("start-maximized");
-						System.out.println("Setting Firefox driver path for MAC...");
+						
+						
+						logger.info("Setting Firefox driver path for MAC...");
 						System.setProperty("webdriver.gecko.driver",
 								"src/main/resources/executables/firefox/firefoxdriver_mac/geckodriver");
 						Utilities.executeCMD(
@@ -86,6 +95,7 @@ public class DriverFactory {
 				driver.get(Utilities.getPropertyValue("url"));
 				Dimension d = new Dimension(1440, 900);
 				Point p = new Point(0, 0);
+				logger.info("Maximising browser");
 				driver.manage().window().setPosition(p);
 				driver.manage().window().setSize(d);
 
@@ -99,14 +109,15 @@ public class DriverFactory {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			System.out.println(e.getMessage());
+			logger.error("Something went wrong", e);
+			
 		}
 
 		return this.driver;
 	}
 
 	public String getOSType() {
-		System.out.println(System.getProperty("os.name"));
+		logger.info ("Operating System = "+System.getProperty("os.name"));
 		return System.getProperty("os.name");
 	}
 

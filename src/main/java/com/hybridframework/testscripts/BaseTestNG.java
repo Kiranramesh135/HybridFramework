@@ -31,7 +31,7 @@ public class BaseTestNG {
 
 		Utilities.createResultFolder();
 		logger = LogManager.getLogger(this.getClass());
-		logger.info("----------Initializing Driver----------");
+		logger.info("----------Initializing Browser----------");
 		driverFactory = new DriverFactory();
 		driver = driverFactory.setup(driver);
 		extentReportFactory = new ExtentReportFactory();
@@ -44,7 +44,6 @@ public class BaseTestNG {
 
 		test = extent.startTest((this.getClass().getSimpleName() + " :: " + method.getName()), method.getName());
 		test.assignAuthor("Kiran");
-		
 
 	}
 
@@ -58,5 +57,6 @@ public class BaseTestNG {
 		extent.flush();
 		extent.close();
 		driverFactory.destroyDriver();
+		logger.info("----------Closing Browser----------");
 	}
 }

@@ -28,6 +28,11 @@ public class OrangehrmAddUserPage extends BasePageObject {
 
 	@FindBy(id = "btnSave")
 	private WebElement saveButton;
+	
+	@FindBy(xpath = "//span[contains(text(),'Already exists')]")
+	private WebElement alreadyExistError;
+	
+	
 
 	public OrangehrmAddUserPage(WebDriver driver) {
 		super(driver);
@@ -50,6 +55,10 @@ public class OrangehrmAddUserPage extends BasePageObject {
 
 	public void clickSave() {
 		saveButton.click();
+	}
+	
+	public WebElement getAlreadyExistError() {
+		return alreadyExistError;
 	}
 
 }

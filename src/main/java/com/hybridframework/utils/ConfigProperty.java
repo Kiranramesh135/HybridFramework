@@ -3,7 +3,7 @@ package com.hybridframework.utils;
 public class ConfigProperty {
 	
 	public enum ConfigTimeout {
-		TIMEOUT_VALUE("60");
+		TIMEOUT_VALUE("30");
 		
 		String value;
 		
