@@ -123,6 +123,7 @@ public class DriverFactory {
 
 	public void destroyDriver() {
 		driver.quit();
-		driver = null;
+//		driver.close();
+//		driver = null;
 	}
 }

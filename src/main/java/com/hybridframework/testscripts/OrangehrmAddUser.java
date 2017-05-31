@@ -31,7 +31,7 @@ public class OrangehrmAddUser extends BaseTestNG {
 			OrangehrmHomePage orangehrmHomePage = new OrangehrmHomePage(driver);
 			test.log(LogStatus.PASS, "Landed in Home Page");
 			Utilities.takeScreenshot(driver, "HomePage");
-			
+
 			// test.log(LogStatus.INFO,test.addScreenCapture(Utilities.scrShtFileName));
 			orangehrmHomePage.clickAdminTab();
 			test.log(LogStatus.PASS, "Clicked on AdminTab");
@@ -47,28 +47,26 @@ public class OrangehrmAddUser extends BaseTestNG {
 			Utilities.takeScreenshot(driver, "AddUserPage");
 			orangehrmAddUserPage.clickSave();
 			try {
-				if(orangehrmAddUserPage.getAlreadyExistError().isDisplayed()) {
+				if (orangehrmAddUserPage.getAlreadyExistError().isDisplayed()) {
 					Utilities.takeScreenshot(driver, "DuplicateUser");
 					test.log(LogStatus.FAIL, "Duplicate User");
 					orangehrmAddUserPage.logout();
 				}
 			}
-			catch(NoSuchElementException e) {
-				
+			catch (NoSuchElementException e) {
+
 				orangehrmSystemUsersPage.waitForsystemUsersHeader();
 				test.log(LogStatus.PASS, "Landed in SysemUserPage");
 				orangehrmSystemUsersPage.logout();
 				test.log(LogStatus.PASS, "Clicked logout and landed in LoginPage");
-				
+
 			}
-			
-			
 
 		}
 		catch (InterruptedException e) {
 
 			e.printStackTrace();
-			logger.error("Something went wrong",e);
+			logger.error("Something went wrong", e);
 			test.log(LogStatus.ERROR, e);
 
 		}
@@ -76,7 +74,7 @@ public class OrangehrmAddUser extends BaseTestNG {
 
 			Utilities.takeScreenshot(driver, "Exception");
 			e.printStackTrace();
-			logger.error("Something went wrong",e);
+			logger.error("Something went wrong", e);
 			test.log(LogStatus.ERROR, e);
 
 		}

@@ -1,6 +1,5 @@
-package com.hybridframework.stepdefinitions;
 
-import org.junit.Test;
+
 import org.junit.runner.RunWith;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
@@ -11,11 +10,6 @@ import cucumber.api.junit.Cucumber;
 //, tags = { "@test1" }
 // ,glue = {"helpers","com.hybridframework.stepdefinitions"}
 )
-public class CucumberRunner {
-	
-	@Test
-	public void dummyTest() {
-		System.out.println("Testing maven cucumber runner");
-	}
+public class CucumberRunnerTest {
 	
 }

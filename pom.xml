@@ -5,6 +5,12 @@
 	<artifactId>HybridFramework</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
+	<repositories>
+		<repository>
+			<id>repo.bodar.com</id>
+			<url>http://repo.bodar.com</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -113,6 +119,15 @@
 			<artifactId>postgresql</artifactId>
 			<version>42.1.1.jre6</version>
 		</dependency>
+		<!-- for cucumber reporting -->
+
+		<dependency>
+			<groupId>com.googlecode.totallylazy</groupId>
+			<artifactId>totallylazy</artifactId>
+			<version>1.86</version>
+
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -128,12 +143,92 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.19.1</version>
+
+				<!-- Below configuration is to execute testng.xml -->
 				<configuration>
 					<suiteXmlFiles>
 						<suiteXmlFile>testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
+				<!--<configuration> <includes> <include>**/CucumberRunner.java</include> 
+					</includes> </configuration> -->
+
+
+				<!--<configuration> <testFailureIgnore>true</testFailureIgnore> <includes> 
+					<exclude>**/*CucumberRunner</exclude> </includes> <classesDirectory> target/classes/com/hybridframework/stepdefinitions/CucumberRunner 
+					</classesDirectory> </configuration> -->
 			</plugin>
+			<plugin>
+				<groupId>net.masterthought</groupId>
+				<artifactId>maven-cucumber-reporting</artifactId>
+				<version>3.7.0</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.googlecode.totallylazy</groupId>
+						<artifactId>totallylazy</artifactId>
+						<version>991</version>
+						<scope>system</scope>
+						<systemPath>${project.basedir}/lib/totallylazy-991.jar</systemPath>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>execution</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<projectName>HybridFramework</projectName>
+							<outputDirectory>${project.build.directory}/site/cucumber-reports</outputDirectory>
+							<cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+							<enableFlashCharts>false</enableFlashCharts>
+							<skippedFails>true</skippedFails>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executableDependency>
+						<groupId>info.cukes</groupId>
+						<artifactId>cucumber-core</artifactId>
+					</executableDependency>
+					<mainClass>cucumber.api.cli.Main</mainClass>
+					<arguments>
+						<argument>--plugin</argument>
+						<argument>junit:target/cucumber-junit-report/allcukes.xml</argument>
+						<argument>--plugin</argument>
+						<argument>pretty</argument>
+						<argument>--plugin</argument>
+						<argument>html:target/cucumber-html-report</argument>
+						<argument>--tags</argument>
+						<argument>@login</argument>
+						<argument>--glue</argument>
+						<argument>com/</argument>
+						<argument>src/</argument>
+					</arguments>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>info.cukes</groupId>
+						<artifactId>cucumber-core</artifactId>
+						<version>1.1.5</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
 		</plugins>
 	</build>
 </project>

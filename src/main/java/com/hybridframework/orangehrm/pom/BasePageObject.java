@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.hybridframework.utils.WaitTool;
-import com.hybridframework.utils.ConfigProperty.ConfigTimeout;
 
 public abstract class BasePageObject {
 

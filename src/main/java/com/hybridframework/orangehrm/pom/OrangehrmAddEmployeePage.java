@@ -39,6 +39,7 @@ public class OrangehrmAddEmployeePage extends BasePageObject {
 		Select select = new Select(locationDropDown);
 		select.selectByVisibleText(location);
 		saveButton.click();
+		System.out.println("");
 	}
 	
 

@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.hybridframework.utils.WaitTool;
-import com.hybridframework.utils.ConfigProperty.ConfigTimeout;
 
 public class OrangehrmLoginPage extends BasePageObject {
 
@@ -22,7 +21,7 @@ public class OrangehrmLoginPage extends BasePageObject {
 	public OrangehrmLoginPage(WebDriver driver) {
 		super(driver);
 		WaitTool.waitFor(driver, ExpectedConditions.visibilityOf(loginButton),
-				ConfigTimeout.TIMEOUT_VALUE.getPropertyAsInt());
+				60);
 		System.out.println("Landed in OrangehrmLoginPage");
 	}
 	

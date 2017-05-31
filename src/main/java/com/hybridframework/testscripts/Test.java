@@ -4,13 +4,6 @@ import java.io.File;
 
 import org.openqa.selenium.WebDriver;
 
-import com.hybridframework.orangehrm.pom.OrangehrmAddUserPage;
-import com.hybridframework.orangehrm.pom.OrangehrmHomePage;
-import com.hybridframework.orangehrm.pom.OrangehrmLoginPage;
-import com.hybridframework.orangehrm.pom.OrangehrmSystemUsersPage;
-import com.hybridframework.utils.DriverFactory;
-import com.hybridframework.utils.Utilities;
-
 public class Test {
 	
 	public static WebDriver driver;
