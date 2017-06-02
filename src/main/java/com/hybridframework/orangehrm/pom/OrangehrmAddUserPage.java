@@ -38,7 +38,7 @@ public class OrangehrmAddUserPage extends BasePageObject {
 		super(driver);
 		WaitTool.waitFor(driver, ExpectedConditions.visibilityOf(addUserHeader),
 				ConfigTimeout.TIMEOUT_VALUE.getPropertyAsInt());
-		System.out.println("Landed in OrangehrmAddUserPage");
+		
 	}
 
 	public void enterUserDetails(String emplName, String uName, String pwd, String confirmPwd)

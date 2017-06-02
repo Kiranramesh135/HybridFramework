@@ -33,7 +33,7 @@ public class DriverFactory {
 					logger.info("----------Setting chrome driver path for Windows...----------");
 
 					System.setProperty("webdriver.chrome.driver",
-							"src/main/resources/chrome-executables/chromedriver_win32/chromedriver.exe");
+							"resources/chrome-executables/chromedriver_win32/chromedriver.exe");
 					logger.info("Found chrome driver exe in the below mentioned path");
 					logger.info(System.getProperty("webdriver.chrome.driver"));
 
@@ -61,9 +61,9 @@ public class DriverFactory {
 
 						logger.info("etting Chrome driver path for MAC...");
 						System.setProperty("webdriver.chrome.driver",
-								"src/main/resources/executables/chrome/chromedriver_mac64/chromedriver");
+								"resources/executables/chrome/chromedriver_mac64/chromedriver");
 						Utilities.executeCMD(
-								"chmod +x " + "src/main/resources/executables/chrome/chromedriver_mac64/chromedriver");
+								"chmod +x " + "resources/executables/chrome/chromedriver_mac64/chromedriver");
 						logger.info(System.getProperty("webdriver.chrome.driver"));
 
 						capabilities.setCapability(ChromeOptions.CAPABILITY, options);
@@ -77,8 +77,7 @@ public class DriverFactory {
 						// capabilities = DesiredCapabilities.firefox();
 						// FirefoxOptions options = new FirefoxOptions();
 						// options.addArguments("start-maximized");
-						
-						
+
 						logger.info("Setting Firefox driver path for MAC...");
 						System.setProperty("webdriver.gecko.driver",
 								"src/main/resources/executables/firefox/firefoxdriver_mac/geckodriver");
@@ -91,7 +90,7 @@ public class DriverFactory {
 					}
 				}
 
-				driver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
+				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 				driver.get(Utilities.getPropertyValue("url"));
 				Dimension d = new Dimension(1440, 900);
 				Point p = new Point(0, 0);
@@ -110,20 +109,20 @@ public class DriverFactory {
 		catch (Exception e) {
 			e.printStackTrace();
 			logger.error("Something went wrong", e);
-			
+
 		}
 
 		return this.driver;
 	}
 
 	public String getOSType() {
-		logger.info ("Operating System = "+System.getProperty("os.name"));
+		logger.info("Operating System = " + System.getProperty("os.name"));
 		return System.getProperty("os.name");
 	}
 
 	public void destroyDriver() {
-		driver.quit();
-//		driver.close();
-//		driver = null;
+		// driver.quit();
+		driver.close();
+		// driver = null;
 	}
 }

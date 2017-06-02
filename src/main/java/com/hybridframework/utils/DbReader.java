@@ -13,7 +13,7 @@ public class DbReader {
 	public static final String UNAME = "postgres";
 	public static final String PWD = "12345";
 
-	public static Object[][] readDB() {
+	public static Object[][] readDB(String tableName) {
 
 		Object[][] data = null;
 		int columnCount = 0;
@@ -23,8 +23,8 @@ public class DbReader {
 		try {
 			Connection conn = DriverManager.getConnection(DB_URL, UNAME, PWD);
 			Statement stmt = conn.createStatement();
-			String sql1 = "SELECT COUNT(*) FROM userdetail";
-			String sql2 = "SELECT * FROM userdetail ORDER BY empname;";
+			String sql1 = "SELECT COUNT(*) FROM " + tableName;
+			String sql2 = "SELECT * FROM " + tableName + " ;";
 
 			// to get the number of entries present in the table
 			ResultSet rs = stmt.executeQuery(sql1);
@@ -53,11 +53,59 @@ public class DbReader {
 
 		}
 		catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
 
 		return data;
+	}
+
+	public static Object[][] readDB(String tableName, String columnName) {
+
+		Object[][] data = null;
+		int columnCount = 0;
+		int rowCount = 0;
+		int count = 0;
+
+		try {
+			Connection conn = DriverManager.getConnection(DB_URL, UNAME, PWD);
+			Statement stmt = conn.createStatement();
+			String sql1 = "SELECT COUNT(*) FROM " + tableName;
+			String sql2 = "SELECT " + columnName + " FROM " + tableName + " ;";
+
+			// to get the number of entries present in the table
+			ResultSet rs = stmt.executeQuery(sql1);
+			rs.next();
+			rowCount = Integer.parseInt(rs.getString(1));
+			System.out.println("Row count = " + rowCount);
+
+			// to get all the data present in the table
+			rs = stmt.executeQuery(sql2);
+			ResultSetMetaData metaData = rs.getMetaData();
+			columnCount = metaData.getColumnCount();
+			System.out.println("Column count = " + columnCount);
+			data = new Object[rowCount][columnCount];
+
+			while (rs.next()) {
+
+				for (int i = 0; i < columnCount; i++) {
+
+					data[count][i] = rs.getString(i + 1);
+
+				}
+				count++;
+				System.out.println();
+
+			}
+
+		}
+		catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return data;
+
 	}
 
 }

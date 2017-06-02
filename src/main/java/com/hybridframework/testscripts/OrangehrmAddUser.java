@@ -21,7 +21,7 @@ public class OrangehrmAddUser extends BaseTestNG {
 		try {
 
 			OrangehrmLoginPage orangecrmLoginPage = new OrangehrmLoginPage(driver);
-			logger.info("---------Opening Login Page---------");
+			logger.info("Landed in Login Page");
 			test.assignCategory("Sample Test1");
 			test.log(LogStatus.PASS, "Landed in Login Page");
 			Utilities.takeScreenshot(driver, "LoginPage");
@@ -91,7 +91,8 @@ public class OrangehrmAddUser extends BaseTestNG {
 
 	@DataProvider
 	public Object[][] getUserDetailsFromDB() {
-		Object[][] objArray = DbReader.readDB();
+		
+		Object[][] objArray = DbReader.readDB("userdetail");
 		return objArray;
 	}
 

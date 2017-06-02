@@ -18,7 +18,6 @@ public class Utilities {
 
 	public static File OutputFile;
 	public static String scrShtFileName;
-	
 
 	public static void takeScreenshot(WebDriver driver, String filename) {
 		// For Local execution
@@ -34,10 +33,9 @@ public class Utilities {
 
 				scrShtFolder.mkdir();
 			}
-			System.out.println(scrShtFolder.getAbsolutePath());
+			// System.out.println(scrShtFolder.getAbsolutePath());
 			scrShtFileName = scrShtFolder.getAbsolutePath() + "/" + filename + System.currentTimeMillis() + ".png";
-			FileUtils.copyFile(srcFile,
-					new File(scrShtFileName));
+			FileUtils.copyFile(srcFile, new File(scrShtFileName));
 
 		}
 		catch (IOException e) {
@@ -103,11 +101,11 @@ public class Utilities {
 			Date now = new Date();
 			SimpleDateFormat timeStamp = new SimpleDateFormat("ddMMyyyyHHmmss");
 			String time = timeStamp.format(now);
-			String path = System.getProperty("user.dir") + "/src/main/resources/Results/" + time;
+			String path = System.getProperty("user.dir") + "/resources/Results/" + time;
 
 			OutputFile = new File(path);
 			if (!OutputFile.exists()) {
-				System.out.println("a");
+
 				OutputFile.mkdir();
 			}
 			System.out.println("Creating result folder at location : " + path);

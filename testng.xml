@@ -3,11 +3,12 @@
 <suite name="Suite">
 	<test name="Test1">
 		<classes>
-		<!--  <class name="com.hybridframework.testscripts.OrangehrmAddUser"/>-->
-			<!-- <class name="com.hybridframework.testscripts.OrangehrmDeleteUser" /> -->
-			<class name="com.hybridframework.stepdefinitions.CucumberRunner" />
+			<!-- <class name="com.hybridframework.testscripts.OrangehrmAddUser" /> -->
+			<class name="com.hybridframework.testscripts.OrangehrmDeleteUser" />
+
+
+			<!-- <class name="com.hybridframework.stepdefinitions.CucumberRunner" 
+				/> -->
 		</classes>
 	</test> <!-- Test -->
-	
-	
 </suite> <!-- Suite -->
