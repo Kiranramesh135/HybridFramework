@@ -7,8 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-import com.hybridframework.utils.WaitTool;
 import com.hybridframework.utils.ConfigProperty.ConfigTimeout;
+import com.hybridframework.utils.WaitTool;
 
 public class OrangehrmAddEmployeePage extends BasePageObject {
 

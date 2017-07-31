@@ -4,8 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import com.hybridframework.utils.WaitTool;
+
 import com.hybridframework.utils.ConfigProperty.ConfigTimeout;
+import com.hybridframework.utils.WaitTool;
 
 public class ProductsListPage extends BasePageObject {
 	

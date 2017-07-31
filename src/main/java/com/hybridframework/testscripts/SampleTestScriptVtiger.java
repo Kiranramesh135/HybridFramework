@@ -1,6 +1,7 @@
 package com.hybridframework.testscripts;
 
-import org.apache.logging.log4j.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 
 import com.hybridframework.utils.Utilities;

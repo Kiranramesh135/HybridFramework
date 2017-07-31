@@ -1,7 +1,6 @@
 package com.hybridframework.testscripts;
 
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
